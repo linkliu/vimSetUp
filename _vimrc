@@ -15,10 +15,15 @@ Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
 call plug#end()
 
+let mapleader = ","
+
 " 设置打开文件的编码格式  
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
 set fileencoding=utf-8
 
+"设置启动时界面大小
+winpos  50 50 "设置初始界面位置
+set lines=50 columns=200
 
 set number
 map R :source $MYVIMRC<CR>
@@ -134,9 +139,9 @@ nmap <Leader>d :ALEDetail<CR>
 let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],}
 
 "代码注释插件
+let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
-unmap <CR>
 
 "括号匹配插件
 let g:rainbow_active = 1
