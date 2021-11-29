@@ -13,6 +13,11 @@ Plug 'luochen1990/rainbow'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
+Plug 'WolfgangMehner/lua-support' "Lua支持
+Plug 'tbastos/vim-lua' " Lua高亮
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
+Plug 'dyng/ctrlsf.vim' "全局搜索插件
+Plug 'vim-scripts/ag.vim' "全局搜索插件
 call plug#end()
 
 let mapleader = ","
@@ -177,6 +182,16 @@ let Tlist_Inc_Winwidth=0
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
+
+nnoremap <A-n> :tabn<cr>
+
+"全局搜索AG配置
+map <s-a> :Ag<Space>
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+"全局搜索ctrlsf配置
+nnoremap <Leader>f :CtrlSF<Space>
+
 
 
 
