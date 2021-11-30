@@ -16,8 +16,8 @@ Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序�
 Plug 'WolfgangMehner/lua-support' "Lua支持
 Plug 'tbastos/vim-lua' " Lua高亮
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
-Plug 'dyng/ctrlsf.vim' "全局搜索插件
-Plug 'vim-scripts/ag.vim' "全局搜索插件
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
+Plug 'fholgado/minibufexpl.vim' " buffer管理器
 call plug#end()
 
 let mapleader = ","
@@ -184,16 +184,23 @@ let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
+noremap <S-f> :Clap files!<cr>
+nnoremap <leader>nf :NERDTreeFind
+nnoremap <leader>nr :NERDTreeRefreshRoot
+nnoremap <leader>nt :NERDTree
+nnoremap <leader>nm :NERDTreeMirror<cr>
+nnoremap <leader>nf :NERDTreeFocus<cr>
 
-"全局搜索AG配置
-map <s-a> :Ag<Space>
-let g:ackprg = 'ag --nogroup --nocolor --column'
+"缓冲区命令
+nmap <leader>bn :bnext<cr>
+nmap <leader>bp :bprevious<cr>
+nmap <leader>bf :bfirst<cr>
+nmap <leader>bl :blast<cr>
+nmap <leader>bt :buffer 
 
-"全局搜索ctrlsf配置
-nnoremap <Leader>f :CtrlSF<Space>
-
-
-
-
+"minibufexpl 设置
+map <Leader>mbe :MBEOpen<cr>
+map <Leader>mbc :MBEClose<cr>
+map <Leader>mbt :MBEToggle<cr>
 
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
