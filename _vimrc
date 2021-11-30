@@ -199,8 +199,16 @@ nmap <leader>bl :blast<cr>
 nmap <leader>bt :buffer 
 
 "minibufexpl 设置
+let g:miniBufExplVSplit = 40
+let g:miniBufExplBRSplit = 1
+let g:miniBufExplMaxSize = 100
+let g:miniBufExplBuffersNeeded = 0
 map <Leader>mbe :MBEOpen<cr>
 map <Leader>mbc :MBEClose<cr>
 map <Leader>mbt :MBEToggle<cr>
+
+"清除高搜索高亮
+nmap <leader>ch :noh<cr>
+
 
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
