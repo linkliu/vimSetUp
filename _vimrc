@@ -18,7 +18,10 @@ Plug 'tbastos/vim-lua' " Lua高亮
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
-call plug#end()
+Plug 'BurntSushi/ripgrep' " rg
+Plug 'scrooloose/syntastic' "语法检测
+Plug 'sheerun/vim-polyglot' "代码高亮
+"call plug#end()
 
 let mapleader = ","
 
@@ -136,12 +139,12 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
 "<Leader>s触发/关闭语法检查
-nmap <Leader>s :ALEToggle<CR>
+nmap <Leader>als :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
-nmap <Leader>d :ALEDetail<CR>
+nmap <Leader>ald :ALEDetail<CR>
 "set statusline=%F%m%r%h%w [FORMAT=%{&ff}] [TYPE=%Y] [POS=%l,%v][%p%%] %{strftime("%d/%m/%y - %H:%M")} %{ALEGetStatusLine()}
 "cpp NOT C++
-let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],}
+let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],'lua': ['luac'],}
 
 "代码注释插件
 let g:NERDCompactSexyComs = 1
@@ -184,7 +187,7 @@ let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
-noremap <S-f> :Clap files!<cr>
+noremap <leader>cf :Clap files!<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
@@ -209,6 +212,16 @@ map <Leader>mbt :MBEToggle<cr>
 
 "清除高搜索高亮
 nmap <leader>ch :noh<cr>
+
+"代码高亮插件设置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
