@@ -37,7 +37,9 @@ set fileencoding=utf-8
 
 "设置启动时界面大小
 winpos  50 50 "设置初始界面位置
-set lines=50 columns=200
+set lines=50 columns=300
+set textwidth=300
+set nowrap
 
 set number
 map R :source $MYVIMRC<CR>
@@ -94,7 +96,7 @@ set autoindent
 "隐藏gVim的四个滚动条
 set guioptions-=T   "Hide Tool-Bar
 set guioptions-=r   "hide right scroll
-set guioptions-=b   "hide buttom scoll
+"set guioptions-=b   "hide buttom scoll
 set guioptions-=L   "hide left scroll
 
 "突出显示选中的字符所在行列
@@ -239,3 +241,16 @@ let g:syntastic_check_on_wq = 0
 
 
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
+
+
+function OpenFileLocation()
+	if ( expand("%") != "" )
+		execute "!start explorer /select, %" 
+	else
+		execute "!start explorer /select, %:p:h"
+	endif
+endfunction
+
+map <leader>ocf :call OpenFileLocation()<CR>
+
+nnoremap <silent> <leader>cdc :cd %:p:h<CR>
