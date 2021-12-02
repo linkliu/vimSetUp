@@ -21,6 +21,12 @@ Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
 Plug 'scrooloose/syntastic' "语法检测
 Plug 'sheerun/vim-polyglot' "代码高亮
+Plug 'danilo-augusto/vim-afterglow' "主题
+Plug 'ajmwagar/vim-deus' "主题
+Plug 'NLKNguyen/papercolor-theme' "主题
+Plug 'sainnhe/sonokai' "主题
+Plug 'joshdick/onedark.vim' "主题
+    
 "call plug#end()
 
 let mapleader = ","
@@ -35,7 +41,15 @@ set lines=50 columns=200
 
 set number
 map R :source $MYVIMRC<CR>
-colorscheme snazzy
+"colorscheme snazzy
+"colorscheme deus
+"set background=light
+"colorscheme PaperColor
+"set background=dark
+"colorscheme PaperColor
+
+
+colorscheme afterglow
 set encoding=utf-8
 syntax on
 language C
