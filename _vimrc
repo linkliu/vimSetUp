@@ -13,7 +13,6 @@ Plug 'luochen1990/rainbow'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
-Plug 'WolfgangMehner/lua-support' "Lua支持
 Plug 'tbastos/vim-lua' " Lua高亮
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
@@ -26,8 +25,7 @@ Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
 Plug 'sainnhe/sonokai' "主题
 Plug 'joshdick/onedark.vim' "主题
-    
-"call plug#end()
+call plug#end()
 
 let mapleader = ","
 
