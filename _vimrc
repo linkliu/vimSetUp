@@ -14,6 +14,7 @@ Plug 'ycm-core/YouCompleteMe'
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
 Plug 'tbastos/vim-lua' " Lua高亮
+Plug 'WolfgangMehner/lua-support' " Lua支持，包括编译，帮助
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
@@ -191,7 +192,7 @@ nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " 跳转到定义处
 let g:ycm_min_num_of_chars_for_completion=2                 " 从第2个键入字符就开始罗列匹配项
 let g:ycm_key_invoke_completion = '<c-z>'
-let g:ycm_semantic_triggers =  { 'c,cpp,python,java,go,erlang,perl': ['re!w{2}'],'cs,lua,javascript': ['re!w{2}'],}
+let g:ycm_semantic_triggers =  { 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],'cs,lua,javascript': ['re!\w{2}'],}
 
 "帮助你生成当前程序的所有函数和变量索引
 let Tlist_Use_Right_Window=1 
