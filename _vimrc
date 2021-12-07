@@ -26,12 +26,14 @@ Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
 Plug 'sainnhe/sonokai' "主题
 Plug 'joshdick/onedark.vim' "主题
+Plug 'rking/ag.vim' "搜索插件ag
+Plug 'dyng/ctrlsf.vim' "搜索插件
 call plug#end()
 
 let mapleader = ","
 
-" 设置打开文件的编码格式  
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 
+" 设置打开文件的编码格式
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
 
 "设置启动时界面大小
@@ -129,6 +131,7 @@ map ff :NERDTreeToggle<CR>
 set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
 let g:airline_theme='bubblegum'        "Airline主题
 let g:airline_powerline_fonts = 1
+let g:airline_exclude_preview = 1
 " 开启tabline
 let g:airline#extensions#tabline#enabled = 1      "tabline中当前buffer两端的分隔字符
 let g:airline#extensions#tabline#left_sep = ' '   "tabline中未激活buffer两端的分隔字符
@@ -203,7 +206,7 @@ map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
 noremap <leader>cf :Clap files!<cr>
-nnoremap <leader>nf :NERDTreeFind
+nnoremap <leader>ntf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
 nnoremap <leader>nm :NERDTreeMirror<cr>
@@ -227,29 +230,36 @@ map <Leader>mbt :MBEToggle<cr>
 
 "清除高搜索高亮
 nmap <leader>ch :noh<cr>
-
+                        
 "代码高亮插件设置
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{SyntasticStatuslineFlag()}    
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-
-
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
-
 
 function OpenFileLocation()
 	if ( expand("%") != "" )
 		execute "!start explorer /select, %" 
-	else
+    else    
 		execute "!start explorer /select, %:p:h"
 	endif
 endfunction
-
 map <leader>ocf :call OpenFileLocation()<CR>
-
 nnoremap <silent> <leader>cdc :cd %:p:h<CR>
+
+"搜索插件设置
+let g:ctrlsf_backend = 'ag'
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_compact_position = 'bottom_inside'
+let g:ctrlsf_preview_position = 'inside'
+
+nnoremap <leader>cff :CtrlSF
+nnoremap <leader>cfu :CtrlSFUpdate<cr> 
+nnoremap <leader>cft :CtrlSFToggle<cr> 
+nnoremap <leader>cfm :CtrlSFToggleMap<cr> 
+nnoremap <leader>cfo :CtrlSFFocus<cr> 
+
