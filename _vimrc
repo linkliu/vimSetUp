@@ -28,6 +28,7 @@ Plug 'sainnhe/sonokai' "主题
 Plug 'joshdick/onedark.vim' "主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
+Plug 'jremmen/vim-ripgrep' "rg
 call plug#end()
 
 let mapleader = ","
@@ -57,6 +58,10 @@ set encoding=utf-8
 syntax on
 language C
 set nocompatible
+set langmenu=en_US
+let $LANG= 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 filetype on
 filetype indent on
 filetype plugin on
@@ -205,7 +210,8 @@ let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
-noremap <leader>cf :Clap files!<cr>
+noremap <leader>cla :Clap files!<cr>
+noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>ntf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
@@ -252,7 +258,7 @@ map <leader>ocf :call OpenFileLocation()<CR>
 nnoremap <silent> <leader>cdc :cd %:p:h<CR>
 
 "搜索插件设置
-let g:ctrlsf_backend = 'ag'
+let g:ctrlsf_backend = 'rg'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_compact_position = 'bottom_inside'
 let g:ctrlsf_preview_position = 'inside'
