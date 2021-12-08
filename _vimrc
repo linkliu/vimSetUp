@@ -212,11 +212,11 @@ map <F4> :TlistToggle<cr>
 nnoremap <A-n> :tabn<cr>
 noremap <leader>cla :Clap files!<cr>
 noremap <leader>clr :Clap grep<cr>
-nnoremap <leader>ntf :NERDTreeFind
+nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
 nnoremap <leader>nm :NERDTreeMirror<cr>
-nnoremap <leader>nf :NERDTreeFocus<cr>
+nnoremap <leader>no :NERDTreeFocus<cr>
 
 "缓冲区命令
 nmap <leader>bn :bnext<cr>
