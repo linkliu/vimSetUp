@@ -113,9 +113,6 @@ set cursorcolumn
 "自动换行
 set wrap
 
-"显示输入的命令(右下角)
-set showcmd
-
 "智能查找 高亮显示结果
 set hlsearch    
 exec "nohlsearch"    
@@ -191,9 +188,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
-  " Setup formatexpr specified filetype(s).
+  "" Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
+  "" Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
@@ -366,3 +363,5 @@ nnoremap <leader>cft :CtrlSFToggle<cr>
 nnoremap <leader>cfm :CtrlSFToggleMap<cr> 
 nnoremap <leader>cfo :CtrlSFFocus<cr> 
 
+"显示输入的命令(右下角)
+set showcmd
