@@ -44,17 +44,14 @@ set lines=50 columns=300
 set textwidth=300
 set nowrap
 "set sessionoptions-=blank
-
 set number
 map R :source $MYVIMRC<CR>
 "colorscheme snazzy
 "colorscheme deus
 "set background=light
 "colorscheme PaperColor
-"set background=dark
 "colorscheme PaperColor
-
-
+"colorscheme dracula
 colorscheme afterglow
 set encoding=utf-8
 syntax on
