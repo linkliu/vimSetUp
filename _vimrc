@@ -26,6 +26,7 @@ Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
 Plug 'sainnhe/sonokai' "主题
 Plug 'joshdick/onedark.vim' "主题
+Plug 'dracula/vim', { 'as': 'dracula'} "主题 
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'jremmen/vim-ripgrep' "rg
