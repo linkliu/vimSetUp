@@ -251,7 +251,7 @@ map <F5> :UndotreeToggle<CR>
 map ff :NERDTreeToggle<CR>
 
 set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
-let g:airline_theme='bubblegum'        "Airline主题
+let g:airline_theme='afterglow'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
@@ -259,6 +259,7 @@ let g:airline#extensions#tabline#enabled = 1      "tabline中当前buffer两端�
 let g:airline#extensions#tabline#left_sep = ' '   "tabline中未激活buffer两端的分隔字符
 let g:airline#extensions#tabline#left_alt_sep = '|'      "tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1      
+let g:airline_detect_spell=1
 " 映射切换buffer的键位
 nnoremap [b :bp<CR>
 nnoremap ]b :bn<CR>
