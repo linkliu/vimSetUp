@@ -323,9 +323,11 @@ let g:miniBufExplVSplit = 40
 let g:miniBufExplBRSplit = 1
 let g:miniBufExplMaxSize = 100
 let g:miniBufExplBuffersNeeded = 0
-map <Leader>mbe :MBEOpen<cr>
-map <Leader>mbc :MBEClose<cr>
-map <Leader>mbt :MBEToggle<cr>
+map <Leader>me :MBEOpen<cr>
+map <Leader>mc :MBEClose<cr>
+map <Leader>mt :MBEToggle<cr>
+map <Leader>mf :MBEFocus<cr>
+map <Leader>rs :MBEToggleMRU<cr>
 
 "清除高搜索高亮
 nmap <leader>ch :noh<cr>
