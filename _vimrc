@@ -303,7 +303,7 @@ let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
-noremap <leader>cla :Clap files!<cr>
+noremap <F2> :Clap files!<cr>
 noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
@@ -358,7 +358,7 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_compact_position = 'bottom_inside'
 let g:ctrlsf_preview_position = 'inside'
 
-nnoremap <leader>cff :CtrlSF
+nnoremap <F3> :CtrlSF
 nnoremap <leader>cfu :CtrlSFUpdate<cr> 
 nnoremap <leader>cft :CtrlSFToggle<cr> 
 nnoremap <leader>cfm :CtrlSFToggleMap<cr> 
