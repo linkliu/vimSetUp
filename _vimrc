@@ -46,13 +46,17 @@ set nowrap
 "set sessionoptions-=blank
 set number
 map R :source $MYVIMRC<CR>
+
+
+
 "colorscheme snazzy
 "colorscheme deus
 "set background=light
 "colorscheme PaperColor
 "colorscheme PaperColor
 "colorscheme dracula
-colorscheme afterglow
+"colorscheme afterglow
+colorscheme onedark
 set encoding=utf-8
 syntax on
 language C
@@ -123,6 +127,10 @@ let g:XkbSwitchEnabled     = 1
 let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
+
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
 "智能提示coc设置
 " Use tab for trigger completion with characters ahead and navigate.
@@ -251,7 +259,7 @@ map <F5> :UndotreeToggle<CR>
 map ff :NERDTreeToggle<CR>
 
 set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
-let g:airline_theme='afterglow'        "Airline主题
+let g:airline_theme='onedark'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
@@ -358,11 +366,11 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_compact_position = 'bottom_inside'
 let g:ctrlsf_preview_position = 'inside'
 
-nnoremap <F3> :CtrlSF
-nnoremap <leader>cfu :CtrlSFUpdate<cr> 
-nnoremap <leader>cft :CtrlSFToggle<cr> 
-nnoremap <leader>cfm :CtrlSFToggleMap<cr> 
-nnoremap <leader>cfo :CtrlSFFocus<cr> 
+nnoremap <F3> :CtrlSF 
+nnoremap <F6> :CtrlSFUpdate<cr> 
+nnoremap <F9> :CtrlSFFocus<cr> 
+nnoremap <F10> :CtrlSFToggle<cr> 
+nnoremap <F11> :CtrlSFToggleMap<cr> 
 
 "显示输入的命令(右下角)
 set showcmd
