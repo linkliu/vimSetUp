@@ -27,6 +27,8 @@ Plug 'NLKNguyen/papercolor-theme' "主题
 Plug 'sainnhe/sonokai' "主题
 Plug 'joshdick/onedark.vim' "主题
 Plug 'dracula/vim', { 'as': 'dracula'} "主题 
+Plug 'sonph/onehalf', {'rtp': 'vim/'} "Onehalf主题
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'jremmen/vim-ripgrep' "rg
@@ -56,7 +58,9 @@ map R :source $MYVIMRC<CR>
 "colorscheme PaperColor
 "colorscheme dracula
 "colorscheme afterglow
-colorscheme onedark
+"colorscheme onedark
+"colorscheme onehalfdark
+colorscheme material
 set encoding=utf-8
 syntax on
 language C
@@ -128,10 +132,11 @@ let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
 
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
-
+"let g:lightline = {
+  "\ 'colorscheme': 'onedark',
+  "\ }
+"'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+let g:material_theme_style = 'default-community'
 "智能提示coc设置
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -259,7 +264,7 @@ map <F5> :UndotreeToggle<CR>
 map ff :NERDTreeToggle<CR>
 
 set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
-let g:airline_theme='onedark'        "Airline主题
+let g:airline_theme='material'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
@@ -312,6 +317,7 @@ map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files!<cr>
+noremap <F4> :Clap grep2<cr>
 noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
@@ -374,3 +380,4 @@ nnoremap <F11> :CtrlSFToggleMap<cr>
 
 "显示输入的命令(右下角)
 set showcmd
+
