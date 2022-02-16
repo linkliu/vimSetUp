@@ -14,7 +14,7 @@ Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
 Plug 'tbastos/vim-lua' " Lua高亮
-Plug 'WolfgangMehner/lua-support' " Lua支持，包括编译，帮助
+Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
@@ -57,10 +57,10 @@ map R :source $MYVIMRC<CR>
 "colorscheme PaperColor
 "colorscheme PaperColor
 "colorscheme dracula
-"colorscheme afterglow
+colorscheme afterglow
 "colorscheme onedark
 "colorscheme onehalfdark
-colorscheme material
+"colorscheme material
 set encoding=utf-8
 syntax on
 language C
@@ -89,6 +89,9 @@ set scrolloff=5
 
 "开启退格跨行退格
 set backspace=indent,eol,start
+
+"设置LF行尾
+set fileformat=unix
 
 "开启代码折叠
 set foldmethod=indent
@@ -135,8 +138,8 @@ let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 "let g:lightline = {
   "\ 'colorscheme': 'onedark',
   "\ }
-"'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
-let g:material_theme_style = 'default-community'
+"'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lrghter-community' | 'darker-community'
+"let g:material_theme_style = 'palenight'
 "智能提示coc设置
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -264,7 +267,7 @@ map <F5> :UndotreeToggle<CR>
 map ff :NERDTreeToggle<CR>
 
 set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
-let g:airline_theme='material'        "Airline主题
+let g:airline_theme='afterglow'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
