@@ -44,7 +44,6 @@ set fileencoding=utf-8
 winpos  50 50 "设置初始界面位置
 set lines=50 columns=300
 set textwidth=300
-set nowrap
 "set sessionoptions-=blank
 set number
 map R :source $MYVIMRC<CR>
@@ -338,7 +337,7 @@ nmap <leader>bt :buffer
 "minibufexpl 设置
 let g:miniBufExplVSplit = 40
 let g:miniBufExplBRSplit = 1
-let g:miniBufExplMaxSize = 100
+let g:miniBufExplMaxSize = 0
 let g:miniBufExplBuffersNeeded = 0
 map <Leader>me :MBEOpen<cr>
 map <Leader>mc :MBEClose<cr>
@@ -384,3 +383,5 @@ nnoremap <F11> :CtrlSFToggleMap<cr>
 "显示输入的命令(右下角)
 set showcmd
 
+"当一行代码很长显示不了时，不要自动换行
+set nowrap
