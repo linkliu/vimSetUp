@@ -32,6 +32,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'jremmen/vim-ripgrep' "rg
+Plug 'Yggdroot/LeaderF' "模糊搜索插件
 call plug#end()
 
 let mapleader = ","
@@ -127,6 +128,78 @@ exec "nohlsearch"
 set incsearch    
 set ignorecase        
 set smartcase
+
+"LeaderF设置
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+
+"Launch LeaderF to search files.
+nnoremap <leader>lf :LeaderfFile<CR> 
+
+"Launch LeaderF to search buffers.
+nnoremap <leader>lb :LeaderfBuffer<CR> 
+
+"Same as LeaderfBuffer, except that the unlisted buffers are shown.
+nnoremap <leader>lba :LeaderfBufferAll<CR> 
+
+"Launch LeaderF to search Mru.
+nnoremap <leader>lm :LeaderfMru<CR>
+
+"Launch LeaderF to search Mru in current working directory.
+nnoremap <leader>lmc :LeaderfMruCwd<CR> 
+
+"Launch LeaderF to navigate tags.
+nnoremap <leader>lt :LeaderfTag
+
+"Launch LeaderF to navigate tags in current buffer.
+nnoremap <leader>lbt :LeaderfBufTag 
+
+"Launch LeaderF to navigate tags in all listed buffers.
+nnoremap <leader>lta :LeaderfBufTagAll<CR> 
+
+"Launch LeaderF to navigate functions or methods in current buffer.
+nnoremap <leader>lfu :LeaderfFunction<CR> 
+
+"Launch LeaderF to navigate functions or methods in all listed buffers.
+nnoremap <leader>lfa :LeaderfFunctionAll<CR> 
+
+"Launch LeaderF to search a line in current buffer.
+nnoremap <leader>ll :LeaderfLine<CR>
+
+"Launch LeaderF to search a line in all listed buffers.
+nnoremap <leader>lla :LeaderfLineAll<CR> 
+
+"Launch LeaderF to execute the command in the history.
+nnoremap <leader>lh :LeaderfHistoryCmd<CR> 
+
+"Launch LeaderF to execute the search command in the history.
+nnoremap <leader>lhs :LeaderfHistorySearch<CR> 
+
+"Launch LeaderF to execute the commands of itself.
+nnoremap <leader>ls :LeaderfSelf<CR> 
+
+"Launch LeaderF to navigate the help tags.
+nnoremap <leader>lhe :LeaderfHelp<CR> 
+
+"Launch LeaderF to switch between colorschemes.
+nnoremap <leader>lco :LeaderfColorscheme<CR> 
+
+"Launch LeaderF to navigate the filetype.
+nnoremap <leader>lty :LeaderfFiletype<CR> 
+
+"Launch LeaderF to execute user-defined/built-in Ex commands.
+nnoremap <leader>lc :LeaderfCommand<CR> 
+
+"Launch LeaderF to search windows.
+nnoremap <leader>lw :LeaderfWindow<CR>
+
+"Launch LeaderF to use rg interactively.
+nnoremap <leader>lr :LeaderfRgInteractive<CR> 
+
+"Recall last search of rg.
+nnoremap <leader>lrc :LeaderfRgRecall<CR> 
+
 
 "避免中文输入法报警
 let g:XkbSwitchEnabled     = 1
