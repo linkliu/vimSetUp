@@ -132,7 +132,9 @@ set smartcase
 "LeaderF设置
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+
+"Launch LeaderF to search by rg.
+nnoremap <leader>lrg :Leaderf rg<CR>
 
 "Launch LeaderF to search files.
 nnoremap <leader>lf :LeaderfFile<CR> 
