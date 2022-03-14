@@ -1,5 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'DeXP/xkb-switch-win'
@@ -16,7 +17,6 @@ Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序�
 Plug 'tbastos/vim-lua' " Lua高亮
 Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
 Plug 'scrooloose/syntastic' "语法检测
@@ -31,8 +31,6 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'} "Onehalf主题
 Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
-Plug 'jremmen/vim-ripgrep' "rg
-Plug 'Yggdroot/LeaderF' "模糊搜索插件
 call plug#end()
 
 let mapleader = ","
@@ -90,9 +88,6 @@ set scrolloff=5
 "开启退格跨行退格
 set backspace=indent,eol,start
 
-"设置LF行尾
-set fileformat=unix
-
 "开启代码折叠
 set foldmethod=indent
 set foldlevel=99
@@ -119,89 +114,12 @@ set guioptions-=L   "hide left scroll
 set cursorline
 set cursorcolumn
 
-"自动换行
-set wrap
-
 "智能查找 高亮显示结果
 set hlsearch    
 exec "nohlsearch"    
 set incsearch    
 set ignorecase        
 set smartcase
-
-"LeaderF设置
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-
-"Launch LeaderF to search by rg.
-nnoremap <leader>lrg :Leaderf rg<CR>
-
-"Launch LeaderF to search files.
-nnoremap <leader>lf :LeaderfFile<CR> 
-
-"Launch LeaderF to search buffers.
-nnoremap <leader>lb :LeaderfBuffer<CR> 
-
-"Same as LeaderfBuffer, except that the unlisted buffers are shown.
-nnoremap <leader>lba :LeaderfBufferAll<CR> 
-
-"Launch LeaderF to search Mru.
-nnoremap <leader>lm :LeaderfMru<CR>
-
-"Launch LeaderF to search Mru in current working directory.
-nnoremap <leader>lmc :LeaderfMruCwd<CR> 
-
-"Launch LeaderF to navigate tags.
-nnoremap <leader>lt :LeaderfTag
-
-"Launch LeaderF to navigate tags in current buffer.
-nnoremap <leader>lbt :LeaderfBufTag 
-
-"Launch LeaderF to navigate tags in all listed buffers.
-nnoremap <leader>lta :LeaderfBufTagAll<CR> 
-
-"Launch LeaderF to navigate functions or methods in current buffer.
-nnoremap <leader>lfu :LeaderfFunction<CR> 
-
-"Launch LeaderF to navigate functions or methods in all listed buffers.
-nnoremap <leader>lfa :LeaderfFunctionAll<CR> 
-
-"Launch LeaderF to search a line in current buffer.
-nnoremap <leader>ll :LeaderfLine<CR>
-
-"Launch LeaderF to search a line in all listed buffers.
-nnoremap <leader>lla :LeaderfLineAll<CR> 
-
-"Launch LeaderF to execute the command in the history.
-nnoremap <leader>lh :LeaderfHistoryCmd<CR> 
-
-"Launch LeaderF to execute the search command in the history.
-nnoremap <leader>lhs :LeaderfHistorySearch<CR> 
-
-"Launch LeaderF to execute the commands of itself.
-nnoremap <leader>ls :LeaderfSelf<CR> 
-
-"Launch LeaderF to navigate the help tags.
-nnoremap <leader>lhe :LeaderfHelp<CR> 
-
-"Launch LeaderF to switch between colorschemes.
-nnoremap <leader>lco :LeaderfColorscheme<CR> 
-
-"Launch LeaderF to navigate the filetype.
-nnoremap <leader>lty :LeaderfFiletype<CR> 
-
-"Launch LeaderF to execute user-defined/built-in Ex commands.
-nnoremap <leader>lc :LeaderfCommand<CR> 
-
-"Launch LeaderF to search windows.
-nnoremap <leader>lw :LeaderfWindow<CR>
-
-"Launch LeaderF to use rg interactively.
-nnoremap <leader>lr :LeaderfRgInteractive<CR> 
-
-"Recall last search of rg.
-nnoremap <leader>lrc :LeaderfRgRecall<CR> 
-
 
 "避免中文输入法报警
 let g:XkbSwitchEnabled     = 1
@@ -214,6 +132,7 @@ let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
   "\ }
 "'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lrghter-community' | 'darker-community'
 "let g:material_theme_style = 'palenight'
+
 "智能提示coc设置
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -394,7 +313,7 @@ map <F4> :TlistToggle<cr>
 
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files!<cr>
-noremap <F4> :Clap grep2<cr>
+noremap <F4> :Clap grep2 
 noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
@@ -460,3 +379,6 @@ set showcmd
 
 "当一行代码很长显示不了时，不要自动换行
 set nowrap
+
+"设置LF行尾
+set ff=unix
