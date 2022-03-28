@@ -1,6 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
+Plug 'liuchengxu/vim-clap' "文件查找插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'DeXP/xkb-switch-win'
@@ -311,6 +311,7 @@ let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
+let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files!<cr>
 noremap <F4> :Clap grep2 
