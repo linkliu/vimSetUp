@@ -1,5 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
+Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'liuchengxu/vim-clap' "文件查找插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
