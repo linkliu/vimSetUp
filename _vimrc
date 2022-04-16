@@ -1,7 +1,7 @@
 
 call plug#begin('~/.vim/plugged')
-Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'liuchengxu/vim-clap' "文件查找插件
+Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'DeXP/xkb-switch-win'
@@ -35,10 +35,19 @@ Plug 'dyng/ctrlsf.vim' "搜索插件
 call plug#end()
 
 let mapleader = ","
-
+set nocompatible
+set encoding=utf-8
+set langmenu=en_US
+let $LANG= 'en_US'
 " 设置打开文件的编码格式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
+
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+set termencoding=cp936
+language messages zh_CN.utf-8 "设置中文提示
+set ambiwidth=double "设置为双字宽显示，否则无法完整显示如:☆
 
 "设置启动时界面大小
 winpos  50 50 "设置初始界面位置
@@ -60,14 +69,9 @@ colorscheme afterglow
 "colorscheme onedark
 "colorscheme onehalfdark
 "colorscheme material
-set encoding=utf-8
 syntax on
 language C
-set nocompatible
-set langmenu=en_US
-let $LANG= 'en_US'
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+
 filetype on
 filetype indent on
 filetype plugin on
@@ -260,7 +264,6 @@ map <F5> :UndotreeToggle<CR>
 "Vim内部的文件树：NERDTreeToggle
 map ff :NERDTreeToggle<CR>
 
-set ambiwidth=double                    " 设置为双字宽显示，否则无法完整显示如:☆
 let g:airline_theme='afterglow'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
@@ -352,7 +355,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
 
 function OpenFileLocation()
 	if ( expand("%") != "" )
@@ -384,3 +386,6 @@ set nowrap
 
 "设置LF行尾
 set ff=unix
+
+"字体DejaVu Sans Mono for Powerline，需放在配置文件最后面
+set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
