@@ -1,6 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
-Plug 'liuchengxu/vim-clap' "文件查找插件
+Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
@@ -486,6 +486,9 @@ let g:mkdp_filetypes = ['markdown']
 nmap <leader>mkp :MarkdownPreview<cr>
 nmap <leader>mks :MarkdownPreviewStop<cr>
 nmap <leader>mkt :MarkdownPreviewToggle<cr>
+
+"忽略特定的后缀文件名
+let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
 "字体DejaVu Sans Mono for Powerline，需放在配置文件最后面
 set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
