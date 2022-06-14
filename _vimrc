@@ -16,16 +16,13 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'} "智能提示
-Plug 'luochen1990/rainbow'
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
 Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
-Plug 'tbastos/vim-lua' " Lua高亮
 Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
 Plug 'scrooloose/syntastic' "语法检测
-Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'danilo-augusto/vim-afterglow' "主题
 Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
@@ -36,6 +33,7 @@ Plug 'sonph/onehalf', {'rtp': 'vim/'} "Onehalf主题
 Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
+Plug 'luochen1990/rainbow' "括号对颜色
 call plug#end()
 
 let mapleader = ","
@@ -61,7 +59,7 @@ set textwidth=300
 set number
 map R :source $MYVIMRC<CR>
 
-
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 "colorscheme snazzy
 "colorscheme deus
@@ -69,10 +67,12 @@ map R :source $MYVIMRC<CR>
 "colorscheme PaperColor
 "colorscheme PaperColor
 "colorscheme dracula
-colorscheme afterglow
+"colorscheme afterglow
 "colorscheme onedark
-"colorscheme onehalfdark
+colorscheme onehalfdark
+"colorscheme onehalflight
 "colorscheme material
+
 syntax on
 language C
 
@@ -136,11 +136,9 @@ let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
 
-"let g:lightline = {
-  "\ 'colorscheme': 'onedark',
-  "\ }
+let g:lightline = { 'colorscheme': 'onehalfdark'}
 "'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lrghter-community' | 'darker-community'
-"let g:material_theme_style = 'palenight'
+"let g:material_theme_style = 'darker-community'
 
 "智能提示coc设置
 " Use tab for trigger completion with characters ahead and navigate.
@@ -268,7 +266,7 @@ map <F5> :UndotreeToggle<CR>
 "Vim内部的文件树：NERDTreeToggle
 map ff :NERDTreeToggle<CR>
 
-let g:airline_theme='afterglow'        "Airline主题
+let g:airline_theme='onehalfdark'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
@@ -308,9 +306,6 @@ let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],'lua': ['l
 let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
-
-"括号匹配插件
-let g:rainbow_active = 1
 
 "帮助你生成当前程序的所有函数和变量索引
 "let Tlist_Use_Right_Window=1 
