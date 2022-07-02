@@ -67,9 +67,9 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "colorscheme PaperColor
 "colorscheme PaperColor
 "colorscheme dracula
-"colorscheme afterglow
+colorscheme afterglow
 "colorscheme onedark
-colorscheme onehalfdark
+"colorscheme onehalfdark
 "colorscheme onehalflight
 "colorscheme material
 
@@ -136,7 +136,7 @@ let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
 
-let g:lightline = { 'colorscheme': 'onehalfdark'}
+let g:lightline = { 'colorscheme': 'afterglow'}
 "'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lrghter-community' | 'darker-community'
 "let g:material_theme_style = 'darker-community'
 
@@ -266,7 +266,7 @@ map <F5> :UndotreeToggle<CR>
 "Vim内部的文件树：NERDTreeToggle
 map ff :NERDTreeToggle<CR>
 
-let g:airline_theme='onehalfdark'        "Airline主题
+let g:airline_theme='afterglow'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
