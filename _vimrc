@@ -34,6 +34,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
+Plug 'sheerun/vim-polyglot' "代码高亮
 call plug#end()
 
 let mapleader = ","
