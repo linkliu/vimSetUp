@@ -35,6 +35,7 @@ Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'sheerun/vim-polyglot' "代码高亮
+Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 call plug#end()
 
 let mapleader = ","
@@ -482,6 +483,9 @@ let g:mkdp_filetypes = ['markdown']
 nmap <leader>mkp :MarkdownPreview<cr>
 nmap <leader>mks :MarkdownPreviewStop<cr>
 nmap <leader>mkt :MarkdownPreviewToggle<cr>
+
+"代码块颜色显示
+let g:indent_guides_enable_on_vim_startup = 1
 
 "忽略特定的后缀文件名
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
