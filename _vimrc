@@ -490,5 +490,5 @@ let g:indent_guides_enable_on_vim_startup = 1
 "忽略特定的后缀文件名
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
-"字体DejaVu Sans Mono for Powerline，需放在配置文件最后面
-set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
+"字体JetBrains_Mono，需放在配置文件最后面
+set guifont=JetBrains_Mono_Medium:h10:cANSI:qDRAFT
