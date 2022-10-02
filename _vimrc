@@ -36,6 +36,8 @@ Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
+Plug 'junegunn/vim-easy-align' "对齐插件
+Plug 'ryanoasis/vim-devicons' "图标
 call plug#end()
 
 let mapleader = ","
@@ -483,6 +485,12 @@ let g:mkdp_filetypes = ['markdown']
 nmap <leader>mkp :MarkdownPreview<cr>
 nmap <leader>mks :MarkdownPreviewStop<cr>
 nmap <leader>mkt :MarkdownPreviewToggle<cr>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "代码块颜色显示
 let g:indent_guides_enable_on_vim_startup = 1
