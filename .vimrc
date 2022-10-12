@@ -3,12 +3,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
-Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'DeXP/xkb-switch-win'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -132,12 +130,6 @@ exec "nohlsearch"
 set incsearch    
 set ignorecase        
 set smartcase
-
-
-"避免中文输入法报警
-let g:XkbSwitchEnabled     = 1
-let g:XkbSwitchIMappings   = ['cn']
-let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
 
 let g:lightline = { 'colorscheme': 'afterglow'}
