@@ -318,7 +318,7 @@ map <F4> :TlistToggle<cr>
 
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
-noremap <F2> :Clap files!<cr>
+noremap <F2> :Clap files! .<cr>
 noremap <F4> :Clap grep2 
 noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
@@ -491,4 +491,4 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
 "字体JetBrains_Mono，需放在配置文件最后面
-set guifont=JetBrains_Mono_Medium:h10:cANSI:qDRAFT
+set guifont=JetBrainsMono_Nerd_Font_Mono:h12:b:cANSI:qDRAFT
