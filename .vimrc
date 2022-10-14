@@ -3,12 +3,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
 Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
-Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'DeXP/xkb-switch-win'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
@@ -132,11 +130,6 @@ exec "nohlsearch"
 set incsearch    
 set ignorecase        
 set smartcase
-
-"避免中文输入法报警
-let g:XkbSwitchEnabled     = 1
-let g:XkbSwitchIMappings   = ['cn']
-let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
 
 
 let g:lightline = { 'colorscheme': 'afterglow'}
@@ -318,10 +311,10 @@ let Tlist_Exit_Onluwindow=1
 map <F4> :TlistToggle<cr>
 
 let g:clap_theme = 'material_design_dark'
-nnoremap <A-n> :tabn<cr>
-noremap <F2> :Clap files! .<cr>
-noremap <F4> :Clap grep2 
-noremap <leader>clr :Clap grep<cr>
+nnoremap <leader>tbn :tabn<cr>
+noremap  <leader>clf :Clap files! .<cr>
+noremap  <leader>cl2 :Clap grep2
+noremap  <leader>clp :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
@@ -374,11 +367,11 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_compact_position = 'bottom_inside'
 let g:ctrlsf_preview_position = 'inside'
 
-nnoremap <F3> :CtrlSF 
-nnoremap <F6> :CtrlSFUpdate<cr> 
-nnoremap <F9> :CtrlSFFocus<cr> 
-nnoremap <F10> :CtrlSFToggle<cr> 
-nnoremap <F11> :CtrlSFToggleMap<cr> 
+nnoremap <nowait> <leader>cf :CtrlSF 
+nnoremap <nowait> <Leader>cfu :CtrlSFUpdate<cr> 
+nnoremap <nowait> <leader>cff :CtrlSFFocus<cr> 
+nnoremap <nowait> <leader>cft :CtrlSFToggle<cr> 
+nnoremap <nowait> <leader>cfm :CtrlSFToggleMap<cr> 
 
 "显示输入的命令(右下角)
 set showcmd
@@ -491,6 +484,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+
 "代码块颜色显示
 let g:indent_guides_enable_on_vim_startup = 1
 
@@ -498,4 +492,4 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
 "字体JetBrains_Mono，需放在配置文件最后面
-set guifont=JetBrainsMono_Nerd_Font_Mono:h12:b:cANSI:qDRAFT
+set guifont=JetBrainsMono-Medium:h18
