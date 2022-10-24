@@ -33,6 +33,7 @@ Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 let mapleader = ","
@@ -341,6 +342,13 @@ map <Leader>mc :MBEClose<cr>
 map <Leader>mt :MBEToggle<cr>
 map <Leader>mf :MBEFocus<cr>
 map <Leader>rs :MBEToggleMRU<cr>
+
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 "清除高搜索高亮
 nmap <leader>ch :noh<cr>
