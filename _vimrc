@@ -1,6 +1,6 @@
 
 call plug#begin('~/.vim/plugged')
-Plug 'liuchengxu/vim-clap', { 'do': { -> clap#installer#force_download() } } "文件查找插件
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
@@ -303,13 +303,17 @@ map <F4> :TlistToggle<cr>
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files! .<cr>
-noremap <F4> :Clap grep2 
+noremap <F4> :Clap grep <cr>
+noremap <C-F4> :Clap filer <cr>
 noremap <leader>clr :Clap grep<cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
 nnoremap <leader>nm :NERDTreeMirror<cr>
 nnoremap <leader>no :NERDTreeFocus<cr>
+
+
+
 
 "缓冲区命令
 nmap <leader>bn :bnext<cr>
@@ -387,4 +391,4 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
 "字体JetBrains_Mono，需放在配置文件最后面
-set guifont=JetBrainsMono_Nerd_Font_Mono:h12:b:cANSI:qDRAFT
+set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
