@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'skywind3000/vim-quickui' "菜单
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
@@ -261,9 +262,6 @@ let g:airline#extensions#tabline#left_sep = ' '   "tabline中未激活buffer两�
 let g:airline#extensions#tabline#left_alt_sep = '|'      "tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1      
 let g:airline_detect_spell=1
-" 映射切换buffer的键位
-nnoremap [b :bp<CR>
-nnoremap ]b :bn<CR>
 
 "始终开启标志列
 let g:ale_sign_column_always = 1
@@ -368,9 +366,8 @@ let g:ctrlsf_preview_position = 'inside'
 
 nnoremap <F3> :CtrlSF 
 nnoremap <F6> :CtrlSFUpdate<cr> 
-nnoremap <F9> :CtrlSFFocus<cr> 
-nnoremap <F10> :CtrlSFToggle<cr> 
-nnoremap <F11> :CtrlSFToggleMap<cr> 
+nnoremap <F7> :CtrlSFFocus<cr> 
+nnoremap <F8> :CtrlSFToggle<cr> 
 
 "显示输入的命令(右下角)
 set showcmd
@@ -388,6 +385,127 @@ let g:indent_guides_enable_on_vim_startup = 1
 "忽略特定的后缀文件名
 let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
+
+" clear all the menus
+call quickui#menu#reset()
+
+function! SearchBox()
+	let cword = expand('<cword>')
+	let title = 'Enter text to search:'
+	let text = quickui#input#open(title, cword, 'search')
+	if text != ''
+        execute "CtrlSF ".text
+	endif
+endfunc
+
+" install a 'File' menu, use [text, command] to represent an item.
+call quickui#menu#install('&File', [
+            \ [ "&Show in Explorer\t(,ocf)", 'call OpenFileLocation()', '在资源管理器中打开'],
+            \ [ "&This file as root\t(,cdc)", 'cd %:p:h', '当前文件所在位置作为vim跟目录'],
+            \ [ "--", ''],
+            \ [ "&Search file\t(F2)", 'Clap files! .<cr>', '搜索文件'],
+            \ [ "&Search in file\t(F3)", 'call SearchBox()', '在文件中搜索字符串'],
+            \ [ "&Clap filer\t(C-F4)", 'Clap filer <cr>', '文件管理器(Ivy-like file explorer)'],
+            \ [ "&Clap grep\t(,clr)", 'Clap grep<cr>', '在文件内搜索，vim-clap中的搜索'],
+            \ [ "&CtrlSFUpdate\t(F6)", 'CtrlSFUpdate', '刷新搜索结果'],
+            \ [ "&CtrlSFFocus\t(F7)", 'CtrlSFFocus', '定位到搜索窗口'],
+            \ [ "&CtrlSFToggle\t(F8)", 'CtrlSFToggle', '打开/关闭搜索窗口'],
+            \ [ "--", '' ],
+            \ [ "&TlistToggle\t(F4)", 'TlistToggle', '帮助你生成当前程序的所有函数和变量索引'],
+            \ [ "--", '' ],
+            \ [ "E&xit\tAlt+x", 'echo 6' ],
+            \ ])
+
+"工具
+call quickui#menu#install('Tools',[
+            \ ['$GitTerminal', 'call quickui#terminal#open("cmd", {"w":120, "h":25, "col":70, "line":15, "title":"CODE GIT"})', '打开git控制台'],
+            \ [""],
+            \ ])
+
+" items containing tips, tips will display in the cmdline
+call quickui#menu#install('&Edit', [
+            \ [ "&UndoTree\t(F5)", 'UndotreeToggle' ],
+            \ [ "&NERDTreeFind\t(,nf)", 'NERDTreeFind' ],
+            \ [ "&NERDTreeToggle\t(ff)", 'NERDTreeToggle' ],
+            \ [ "&NERDTreeRefreshRoot\t(,nr)", 'NERDTreeRefreshRoot' ],
+            \ [ "&NERDTreeMirror\t(,nm)", 'NERDTreeMirror' ],
+            \ [ "&NERDTreeFocus\t(,no)", 'NERDTreeFocus'],
+            \ [ "--", ''],
+            \ [ "&Buff next\t(,bn)", 'bnext'],
+            \ [ "&Buff previous\t(,bp)", 'bprevious' ],
+            \ [ "&Buff first\t(,bf)", 'bfirst'],
+            \ [ "&Buff last\t(,bl)", 'blast'],
+            \ [ "&Buff\t(,bt)", 'buffer'],
+            \ [ "--", ''],
+            \ [ "&Open MiniBuf Explorer\t(,me)", 'MBEOpen'],
+            \ [ "&Close MiniBuf Explorer\t(,mc)", 'MBEClose'],
+            \ [ "&Toggle MiniBuf Explorer\t(,mt)", 'MBEToggle'],
+            \ [ "&Focus MiniBuf Explorer\t(,mf)", 'MBEFocus'],
+            \ [ "&MRU MiniBuf Explorer\t(,rs)", 'MBEToggleMRU'],
+            \ ])
+
+" script inside %{...} will be evaluated and expanded in the string
+call quickui#menu#install("&Option", [
+			\ ['Set &Spell %{&spell? "Off":"On"}', 'set spell!'],
+			\ ['Set &Cursor Line %{&cursorline? "Off":"On"}', 'set cursorline!'],
+			\ ['Set &Paste %{&paste? "Off":"On"}', 'set paste!'],
+			\ ])
+
+" register HELP menu with weight 10000
+call quickui#menu#install('H&elp', [
+			\ ["&Cheatsheet", 'help index', ''],
+			\ ['T&ips', 'help tips', ''],
+			\ ['--',''],
+			\ ["&Tutorial", 'help tutor', ''],
+			\ ['&Quick Reference', 'help quickref', ''],
+			\ ['&Summary', 'help summary', ''],
+			\ ], 10000)
+
+
+
+function! OpenCMList()
+    let content = [
+            \ [ "coc-diagnostic-prev\t([g)", '<Plug>(coc-diagnostic-prev)' ],
+            \ [ "coc-diagnostic-prev\t(]g)", '<Plug>(coc-diagnostic-next)' ],
+            \ [ "show documentation\t(K)", 'call <SID>show_documentation()' ],
+            \ [ "coc-definition\t(gd)", '<Plug>(coc-definition)' ],
+            \ [ "coc-type-definition\t(gy)", '<Plug>(coc-type-definition)' ],
+            \ [ "coc-implementation\t(gi)", '<Plug>(coc-implementation)' ],
+            \ [ "coc-references\t(gr)", '<Plug>(coc-references)' ],
+            \ [ "coc#refresh\t(C-space)", 'coc#refresh()' ],
+            \ [ "coc-rename\t(,rn)", '<Plug>(coc-rename)' ],
+            \ [ "coc-format-selected\t(,f)", '<Plug>(coc-format-selected)' ],
+            \ [ "coc-codeaction\t(,ac)", '<Plug>(coc-codeaction)' ],
+            \ [ "coc-fix-current\t(,qf)", '<Plug>(coc-fix-current)'],
+            \ [ "coc-range-select\t(C-s)", '<Plug>(coc-range-select)'],
+            \ [ "--", ''],
+            \ [ "CocList diagnostics\t(<space>a)", '<C-u>CocList diagnostics<cr>'],
+            \ [ "CocList extensions\t(<space>e)", '<C-u>CocList extensions<cr>'],
+            \ [ "CocList commands\t(<space>c)", '<C-u>CocList commands<cr>'],
+            \ [ "CocList outline\t(<space>o)", '<C-u>CocList outline<cr>'],
+            \ [ "CocList -I symbols\t(<space>s)", '<C-u>CocList -I symbols<cr>'],
+            \ [ "CocNext\t(<space>j)", '<C-u>CocNext<CR>'],
+            \ [ "CocPrev\t(<space>k)", '<C-u>CocPrev<CR>'],
+            \ [ "CocListResume\t(<space>p)", '<C-u>CocListResume<CR>'],
+            \ [ "--",''],
+            \ [ "ale_previous_wrap\t(sp)", '<Plug>(ale_previous_wrap)'],
+            \ [ "ale_next_wrap\t(sn)", '<Plug>(ale_next_wrap)'],
+            \ [ "ALEToggle\t(,als)", 'ALEToggle<CR>'],
+            \ [ "ALEDetail\t(,ald)", 'ALEDetail<CR>'],
+            \]
+    let opts = {'title': 'select one'}
+    call quickui#listbox#open(content, opts)
+endfunc
+
+" enable to display tips in the cmdline
+let g:quickui_show_tip = 1
+
+" hit space twice to open menu
+nnoremap <F11> :call quickui#menu#open()<cr> 
+nnoremap <F12> :call OpenCMList()<cr>
+
+nnoremap <leader><nowait>om call quickui#menu#open() <cr>
+nnoremap <leader><nowait>ol call OpenCMList() <cr>
 
 "字体JetBrains_Mono，需放在配置文件最后面
 "set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
