@@ -474,7 +474,7 @@ function! OpenCMList()
             \ [ "coc-references\t(gr)", '<Plug>(coc-references)' ],
             \ [ "coc#refresh\t(C-space)", 'coc#refresh()' ],
             \ [ "coc-rename\t(,rn)", '<Plug>(coc-rename)' ],
-            \ [ "coc-format-selected\t(,f)", '<Plug>(coc-format-selected)' ],
+            \ [ "coc-format-selected\t(,f)", "call CocAction('formatSelected')" ],
             \ [ "coc-codeaction\t(,ac)", '<Plug>(coc-codeaction)' ],
             \ [ "coc-fix-current\t(,qf)", '<Plug>(coc-fix-current)'],
             \ [ "coc-range-select\t(C-s)", '<Plug>(coc-range-select)'],
