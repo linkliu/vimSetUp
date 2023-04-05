@@ -369,21 +369,6 @@ nnoremap <F6> :CtrlSFUpdate<cr>
 nnoremap <F7> :CtrlSFFocus<cr> 
 nnoremap <F8> :CtrlSFToggle<cr> 
 
-"显示输入的命令(右下角)
-set showcmd
-
-"当一行代码很长显示不了时，不要自动换行
-set nowrap
-
-"设置LF行尾
-set ff=unix
-
-
-"代码块颜色显示
-let g:indent_guides_enable_on_vim_startup = 1
-
-"忽略特定的后缀文件名
-let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
 
 
 " clear all the menus
@@ -510,3 +495,20 @@ nnoremap <leader><nowait>ol call OpenCMList() <cr>
 "字体JetBrains_Mono，需放在配置文件最后面
 "set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
 "set guifont=JetBrainsMono_Nerd_Font_Mono:h11:b:cANSI:gDRAFT
+
+"显示输入的命令(右下角)
+set showcmd
+
+"当一行代码很长显示不了时，不要自动换行
+set nowrap
+
+"设置LF行尾
+set ff=unix
+
+
+"代码块颜色显示
+let g:indent_guides_enable_on_vim_startup = 1
+
+"忽略特定的后缀文件名
+let g:NERDTreeIgnore = ['\.vim$','\.meta$']  
+
