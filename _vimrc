@@ -131,7 +131,6 @@ set ignorecase
 set smartcase
 
 "避免中文输入法报警
-let g:XkbSwitchLib = 'C:\Program Files\Neovim\bin\libxkbswitch64.dll' 
 let g:XkbSwitchEnabled     = 1
 let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
