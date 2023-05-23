@@ -14,7 +14,7 @@ Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'} "智能提示
 Plug 'Raimondi/delimitMate' "Vim自动括号补全
-Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
+Plug 'yegappan/taglist' " Vim函数整理,帮助你生成当前程序的所有函数和变量索引
 Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
@@ -131,6 +131,7 @@ set ignorecase
 set smartcase
 
 "避免中文输入法报警
+let g:XkbSwitchLib = 'C:\Program Files\Neovim\bin\libxkbswitch64.dll' 
 let g:XkbSwitchEnabled     = 1
 let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
@@ -295,14 +296,17 @@ map <A-m> <leader>cu
 let Tlist_Inc_Winwidth=0 
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Exit_Onluwindow=1
-map <F4> :TlistToggle<cr>
+nnoremap <leader>tt :TlistToggle<cr>
+nnoremap <leader>tc :TlistClose<cr>
+nnoremap <leader>th :TlistHighlightTag<cr>
+nnoremap <leader>tu ::TlistUpdate<cr>
 
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files! .<cr>
 noremap <F4> :Clap grep <cr>
 noremap <C-F4> :Clap filer <cr>
-noremap <leader>clr :Clap grep<cr>
+noremap <leader>clr :Clap grep <cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
@@ -390,7 +394,7 @@ call quickui#menu#install('&File', [
             \ [ "&Search file\t(F2)", 'Clap files! .<cr>', '搜索文件'],
             \ [ "&Search in file\t(F3)", 'call SearchBox()', '在文件中搜索字符串'],
             \ [ "&Clap filer\t(C-F4)", 'Clap filer <cr>', '文件管理器(Ivy-like file explorer)'],
-            \ [ "&Clap grep\t(,clr)", 'Clap grep<cr>', '在文件内搜索，vim-clap中的搜索'],
+            \ [ "&Clap grep\t(,clr)", 'Clap grep <cr>', '在文件内搜索，vim-clap中的搜索'],
             \ [ "&CtrlSFUpdate\t(F6)", 'CtrlSFUpdate', '刷新搜索结果'],
             \ [ "&CtrlSFFocus\t(F7)", 'CtrlSFFocus', '定位到搜索窗口'],
             \ [ "&CtrlSFToggle\t(F8)", 'CtrlSFToggle', '打开/关闭搜索窗口'],
@@ -400,10 +404,10 @@ call quickui#menu#install('&File', [
             \ [ "E&xit\tAlt+x", 'echo 6' ],
             \ ])
 
+
 "工具
 call quickui#menu#install('Tools',[
             \ ['$GitTerminal', 'call quickui#terminal#open("cmd", {"w":120, "h":25, "col":70, "line":15, "title":"CODE GIT"})', '打开git控制台'],
-            \ [""],
             \ ])
 
 " items containing tips, tips will display in the cmdline
@@ -476,6 +480,11 @@ function! OpenCMList()
             \ [ "ale_next_wrap\t(sn)", '<Plug>(ale_next_wrap)'],
             \ [ "ALEToggle\t(,als)", 'ALEToggle<CR>'],
             \ [ "ALEDetail\t(,ald)", 'ALEDetail<CR>'],
+            \ ["--", ''],
+            \ ["TlistToggle\t(,tt)", ''],
+            \ ["TlistClose\t(,tc)", ''],
+            \ ["TlistHighlightTag\t(,th)", ''],
+            \ ["TlistUpdate\t(,tu)", ''],
             \]
     let opts = {'title': 'select one'}
     call quickui#listbox#open(content, opts)
