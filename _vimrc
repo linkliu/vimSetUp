@@ -303,7 +303,7 @@ nnoremap <leader>tu ::TlistUpdate<cr>
 
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
-noremap <F2> :Clap files! .<cr>
+noremap <F2> :Clap files<cr>
 noremap <F4> :Clap grep <cr>
 noremap <C-F4> :Clap filer <cr>
 noremap <leader>clr :Clap grep <cr>
