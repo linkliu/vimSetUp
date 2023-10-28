@@ -28,7 +28,9 @@ https://github.com/WolfgangMehner/lua-support
 
 --------win
 https://github.com/DeXP/xkb-switch-win
+
 --------linux
+
 --------mac
 https://github.com/myshov/xkbswitch-macosx
 
