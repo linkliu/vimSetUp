@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'skywind3000/vim-quickui' "菜单
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'OmniSharp/omnisharp-vim' "C#插件
 Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'godlygeek/tabular'
