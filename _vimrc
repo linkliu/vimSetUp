@@ -1,24 +1,18 @@
 call plug#begin('~/.vim/plugged')
 Plug 'skywind3000/vim-quickui' "菜单
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
-Plug 'godlygeek/tabular'
 Plug 'DeXP/xkb-switch-win'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'} "智能提示
-Plug 'Raimondi/delimitMate' "Vim自动括号补全
-Plug 'yegappan/taglist' " Vim函数整理,帮助你生成当前程序的所有函数和变量索引
 Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
-Plug 'scrooloose/syntastic' "语法检测
 Plug 'danilo-augusto/vim-afterglow' "主题
 Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
@@ -30,7 +24,6 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
-Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 Plug 'junegunn/vim-easy-align'
 call plug#end()
@@ -289,16 +282,6 @@ let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],'lua': ['l
 let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
-
-"帮助你生成当前程序的所有函数和变量索引
-"let Tlist_Use_Right_Window=1 
-let Tlist_Inc_Winwidth=0 
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Exit_Onluwindow=1
-nnoremap <leader>tt :TlistToggle<cr>
-nnoremap <leader>tc :TlistClose<cr>
-nnoremap <leader>th :TlistHighlightTag<cr>
-nnoremap <leader>tu ::TlistUpdate<cr>
 
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
