@@ -26,6 +26,7 @@ Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 Plug 'junegunn/vim-easy-align'
+Plug 'raimondi/delimitmate' "括号，标点符号自动补全
 call plug#end()
 
 let mapleader = ","
@@ -53,7 +54,6 @@ map R :source $MYVIMRC<CR>
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-"colorscheme snazzy
 "colorscheme deus
 "set background=light
 "colorscheme PaperColor
