@@ -1,5 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'skywind3000/vim-quickui' "菜单
+Plug 'tpope/vim-pathogen' "错误提示
+Plug 'vim-syntastic/syntastic' "错误提示
+Plug 'dense-analysis/ale' "错误提示
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
 Plug 'DeXP/xkb-switch-win'
@@ -65,6 +68,7 @@ colorscheme afterglow
 "colorscheme onehalflight
 "colorscheme material
 
+execute pathogen#infect()
 syntax on
 language C
 
@@ -237,6 +241,16 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"语法检测
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 
 "vim 内部的TOTO List：undoTree
