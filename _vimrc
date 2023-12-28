@@ -30,6 +30,7 @@ Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 Plug 'junegunn/vim-easy-align'
 Plug 'raimondi/delimitmate' "括号，标点符号自动补全
+Plug 'puremourning/vimspector' "调试插件 https://github.com/puremourning/vimspector
 call plug#end()
 
 let mapleader = ","
@@ -251,7 +252,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_lua_checkers = ['luac']
 
 "vim 内部的TOTO List：undoTree
 map <F5> :UndotreeToggle<CR>
@@ -486,6 +487,22 @@ nnoremap <F12> :call OpenCMList()<cr>
 
 nnoremap <leader><nowait>om call quickui#menu#open() <cr>
 nnoremap <leader><nowait>ol call OpenCMList() <cr>
+
+"调试工具设置
+let g:vimspector_base_dir='C:\Users\LINK_LIU\.vim\plugged\vimspector'
+nnoremap <leader>pdb <Plug>VimspectorContinue<cr> 
+nnoremap <leader>pds <Plug>VimspectorStop<cr> 
+nnoremap <leader>pdr <Plug>VimspectorRestart<cr> 
+nnoremap <leader>pdp <Plug>VimspectorPause<cr> 
+nnoremap <leader>pjn <Plug>VimspectorJumpToNextBreakpoint<cr> 
+nnoremap <leader>pjp <Plug>VimspectorJumpToPreviousBreakpoint<cr> 
+nnoremap <leader>ptb <Plug>VimspectorToggleBreakpoint<cr> 
+nnoremap <leader>afb <Plug>VimspectorAddFunctionBreakpoint<cr> 
+nnoremap <leader>pso <Plug>VimspectorStepOver<cr> 
+nnoremap <leader>psi <Plug>VimspectorStepInto<cr> 
+nnoremap <leader>psu <Plug>VimspectorStepOut<cr> 
+nnoremap <leader>dis <Plug>VimspectorDisassemble<cr> 
+nnoremap <leader>rtc <Plug>VimspectorRunToCursor<cr> 
 
 "字体JetBrains_Mono，需放在配置文件最后面
 set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
