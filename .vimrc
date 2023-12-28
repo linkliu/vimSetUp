@@ -32,6 +32,7 @@ Plug 'luochen1990/rainbow' "括号对颜色
 Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 Plug 'junegunn/vim-easy-align'
+Plug 'puremourning/vimspector' "调试插件 https://github.com/puremourning/vimspector
 call plug#end()
 
 let mapleader = ","
@@ -501,6 +502,24 @@ let g:quickui_show_tip = 1
 " hit space twice to open menu
 nnoremap <F11> :call quickui#menu#open()<cr> 
 nnoremap <F12> :call OpenCMList()<cr>
+
+"调试工具设置
+"let g:vimspector_base_dir='~/.vim/plugged/vimspector'
+let g:vimspector_base_dir=expand('$HOME/.vim/plugged/vimspector')
+map <leader>pdb <Plug>VimspectorContinue<cr> 
+map <leader>pds <Plug>VimspectorStop<cr> 
+map <leader>pdr <Plug>VimspectorRestart<cr> 
+map <leader>pdp <Plug>VimspectorPause<cr> 
+map <leader>pjn <Plug>VimspectorJumpToNextBreakpoint<cr> 
+map <leader>pjp <Plug>VimspectorJumpToPreviousBreakpoint<cr> 
+map <leader>ptb <Plug>VimspectorToggleBreakpoint<cr> 
+map <leader>afb <Plug>VimspectorAddFunctionBreakpoint<cr> 
+map <leader>pso <Plug>VimspectorStepOver<cr> 
+map <leader>psi <Plug>VimspectorStepInto<cr> 
+map <leader>psu <Plug>VimspectorStepOut<cr> 
+map <leader>dis <Plug>VimspectorDisassemble<cr> 
+map <leader>rtc <Plug>VimspectorRunToCursor<cr> 
+
 
 
 "字体JetBrains_Mono，需放在配置文件最后面
