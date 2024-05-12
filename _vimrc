@@ -41,6 +41,7 @@ let $LANG= 'en_US'
 " 设置打开文件的编码格式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
+set fileformat=unix
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
