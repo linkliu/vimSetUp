@@ -269,6 +269,7 @@ let g:airline#extensions#tabline#enabled = 1      "tabline中当前buffer两端�
 let g:airline#extensions#tabline#left_sep = ' '   "tabline中未激活buffer两端的分隔字符
 let g:airline#extensions#tabline#left_alt_sep = '|'      "tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1      
+let g:airline#extensions#ale#enabled = 1  " Set this. Airline will handle the rest.
 let g:airline_detect_spell=1
 
 "始终开启标志列
@@ -283,6 +284,7 @@ let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
@@ -290,7 +292,6 @@ nmap sn <Plug>(ale_next_wrap)
 nmap <Leader>als :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <Leader>ald :ALEDetail<CR>
-"set statusline=%F%m%r%h%w [FORMAT=%{&ff}] [TYPE=%Y] [POS=%l,%v][%p%%] %{strftime("%d/%m/%y - %H:%M")} %{ALEGetStatusLine()}
 "cpp NOT C++
 let g:ale_linters = {'cpp': ['gcc'],'c': ['gcc'],'python': ['pylint'],'lua': ['luac'],}
 
