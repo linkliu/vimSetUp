@@ -1,25 +1,21 @@
 call plug#begin('~/.vim/plugged')
 Plug 'skywind3000/vim-quickui' "菜单
+Plug 'tpope/vim-pathogen' "错误提示
+Plug 'vim-syntastic/syntastic' "错误提示
+Plug 'dense-analysis/ale' "错误提示
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-Plug 'OmniSharp/omnisharp-vim' "C#插件
-Plug 'connorholyday/vim-snazzy'
 Plug 'lyokha/vim-xkbswitch'                 "neovim notsupport
-Plug 'godlygeek/tabular'
 Plug 'DeXP/xkb-switch-win'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dense-analysis/ale'
 Plug 'preservim/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'} "智能提示
-Plug 'Raimondi/delimitMate' "Vim自动括号补全
-Plug 'vim-scripts/taglist.vim' "11 Vim函数整理,帮助你生成当前程序的所有函数和变量索引，F4激活
 Plug 'WolfgangMehner/lua-support' "Lua插件
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
-Plug 'scrooloose/syntastic' "语法检测
 Plug 'danilo-augusto/vim-afterglow' "主题
 Plug 'ajmwagar/vim-deus' "主题
 Plug 'NLKNguyen/papercolor-theme' "主题
@@ -31,9 +27,10 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
-Plug 'sheerun/vim-polyglot' "代码高亮
 Plug 'nathanaelkane/vim-indent-guides' "代码块颜色显示
 Plug 'junegunn/vim-easy-align'
+Plug 'raimondi/delimitmate' "括号，标点符号自动补全
+Plug 'puremourning/vimspector' "调试插件 https://github.com/puremourning/vimspector
 call plug#end()
 
 let mapleader = ","
@@ -44,6 +41,7 @@ let $LANG= 'en_US'
 " 设置打开文件的编码格式
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
+set fileformat=unix
 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -61,7 +59,6 @@ map R :source $MYVIMRC<CR>
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-"colorscheme snazzy
 "colorscheme deus
 "set background=light
 "colorscheme PaperColor
@@ -73,6 +70,7 @@ colorscheme afterglow
 "colorscheme onehalflight
 "colorscheme material
 
+execute pathogen#infect()
 syntax on
 language C
 
@@ -246,6 +244,16 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+"语法检测
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_lua_checkers = ['luac']
 
 "vim 内部的TOTO List：undoTree
 map <F5> :UndotreeToggle<CR>
@@ -291,19 +299,12 @@ let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
 
-"帮助你生成当前程序的所有函数和变量索引
-"let Tlist_Use_Right_Window=1 
-let Tlist_Inc_Winwidth=0 
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Exit_Onluwindow=1
-map <F4> :TlistToggle<cr>
-
 let g:clap_theme = 'material_design_dark'
 nnoremap <A-n> :tabn<cr>
-noremap <F2> :Clap files! .<cr>
+noremap <F2> :Clap files<cr>
 noremap <F4> :Clap grep <cr>
 noremap <C-F4> :Clap filer <cr>
-noremap <leader>clr :Clap grep<cr>
+noremap <leader>clr :Clap grep <cr>
 nnoremap <leader>nf :NERDTreeFind
 nnoremap <leader>nr :NERDTreeRefreshRoot
 nnoremap <leader>nt :NERDTree
@@ -339,15 +340,6 @@ nmap ga <Plug>(EasyAlign)
 "清除高搜索高亮
 nmap <leader>ch :noh<cr>
                         
-"代码高亮插件设置
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}    
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 function OpenFileLocation()
 	if ( expand("%") != "" )
 		execute "!start explorer /select, %" 
@@ -391,7 +383,7 @@ call quickui#menu#install('&File', [
             \ [ "&Search file\t(F2)", 'Clap files! .<cr>', '搜索文件'],
             \ [ "&Search in file\t(F3)", 'call SearchBox()', '在文件中搜索字符串'],
             \ [ "&Clap filer\t(C-F4)", 'Clap filer <cr>', '文件管理器(Ivy-like file explorer)'],
-            \ [ "&Clap grep\t(,clr)", 'Clap grep<cr>', '在文件内搜索，vim-clap中的搜索'],
+            \ [ "&Clap grep\t(,clr)", 'Clap grep <cr>', '在文件内搜索，vim-clap中的搜索'],
             \ [ "&CtrlSFUpdate\t(F6)", 'CtrlSFUpdate', '刷新搜索结果'],
             \ [ "&CtrlSFFocus\t(F7)", 'CtrlSFFocus', '定位到搜索窗口'],
             \ [ "&CtrlSFToggle\t(F8)", 'CtrlSFToggle', '打开/关闭搜索窗口'],
@@ -401,10 +393,10 @@ call quickui#menu#install('&File', [
             \ [ "E&xit\tAlt+x", 'echo 6' ],
             \ ])
 
+
 "工具
 call quickui#menu#install('Tools',[
             \ ['$GitTerminal', 'call quickui#terminal#open("cmd", {"w":120, "h":25, "col":70, "line":15, "title":"CODE GIT"})', '打开git控制台'],
-            \ [""],
             \ ])
 
 " items containing tips, tips will display in the cmdline
@@ -477,6 +469,11 @@ function! OpenCMList()
             \ [ "ale_next_wrap\t(sn)", '<Plug>(ale_next_wrap)'],
             \ [ "ALEToggle\t(,als)", 'ALEToggle<CR>'],
             \ [ "ALEDetail\t(,ald)", 'ALEDetail<CR>'],
+            \ ["--", ''],
+            \ ["TlistToggle\t(,tt)", ''],
+            \ ["TlistClose\t(,tc)", ''],
+            \ ["TlistHighlightTag\t(,th)", ''],
+            \ ["TlistUpdate\t(,tu)", ''],
             \]
     let opts = {'title': 'select one'}
     call quickui#listbox#open(content, opts)
@@ -492,8 +489,24 @@ nnoremap <F12> :call OpenCMList()<cr>
 nnoremap <leader><nowait>om call quickui#menu#open() <cr>
 nnoremap <leader><nowait>ol call OpenCMList() <cr>
 
+"调试工具设置
+let g:vimspector_base_dir='C:\Users\LINK_LIU\.vim\plugged\vimspector'
+nnoremap <leader>pdb <Plug>VimspectorContinue<cr> 
+nnoremap <leader>pds <Plug>VimspectorStop<cr> 
+nnoremap <leader>pdr <Plug>VimspectorRestart<cr> 
+nnoremap <leader>pdp <Plug>VimspectorPause<cr> 
+nnoremap <leader>pjn <Plug>VimspectorJumpToNextBreakpoint<cr> 
+nnoremap <leader>pjp <Plug>VimspectorJumpToPreviousBreakpoint<cr> 
+nnoremap <leader>ptb <Plug>VimspectorToggleBreakpoint<cr> 
+nnoremap <leader>afb <Plug>VimspectorAddFunctionBreakpoint<cr> 
+nnoremap <leader>pso <Plug>VimspectorStepOver<cr> 
+nnoremap <leader>psi <Plug>VimspectorStepInto<cr> 
+nnoremap <leader>psu <Plug>VimspectorStepOut<cr> 
+nnoremap <leader>dis <Plug>VimspectorDisassemble<cr> 
+nnoremap <leader>rtc <Plug>VimspectorRunToCursor<cr> 
+
 "字体JetBrains_Mono，需放在配置文件最后面
-"set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
+set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
 "set guifont=JetBrainsMono_Nerd_Font_Mono:h11:b:cANSI:gDRAFT
 
 "显示输入的命令(右下角)
