@@ -484,7 +484,7 @@ nnoremap <leader><nowait>om call quickui#menu#open() <cr>
 nnoremap <leader><nowait>ol call OpenCMList() <cr>
 
 "调试工具设置
-let g:vimspector_base_dir='C:\Users\LINK_LIU\.vim\plugged\vimspector'
+let g:vimspector_base_dir=expand('$HOME/.config/nvim/vimspector-config')
 nnoremap <leader>pdb <Plug>VimspectorContinue<cr> 
 nnoremap <leader>pds <Plug>VimspectorStop<cr> 
 nnoremap <leader>pdr <Plug>VimspectorRestart<cr> 
