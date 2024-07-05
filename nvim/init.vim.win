@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'skywind3000/vim-quickui' "菜单
 Plug 'tpope/vim-pathogen' "错误提示
 Plug 'vim-syntastic/syntastic' "错误提示
@@ -17,13 +17,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
 Plug 'danilo-augusto/vim-afterglow' "主题
-Plug 'ajmwagar/vim-deus' "主题
-Plug 'NLKNguyen/papercolor-theme' "主题
-Plug 'sainnhe/sonokai' "主题
-Plug 'joshdick/onedark.vim' "主题
-Plug 'dracula/vim', { 'as': 'dracula'} "主题 
-Plug 'sonph/onehalf', {'rtp': 'vim/'} "Onehalf主题
-Plug 'kaicataldo/material.vim', { 'branch': 'main' } "material主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
@@ -59,16 +52,8 @@ map R :source $MYVIMRC<CR>
 
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-"colorscheme deus
-"set background=light
-"colorscheme PaperColor
-"colorscheme PaperColor
-"colorscheme dracula
+set t_Co=256
 colorscheme afterglow
-"colorscheme onedark
-"colorscheme onehalfdark
-"colorscheme onehalflight
-"colorscheme material
 
 execute pathogen#infect()
 syntax on
@@ -133,11 +118,6 @@ let g:XkbSwitchLib = 'C:\Program Files\Neovim\bin\libxkbswitch64.dll'
 let g:XkbSwitchEnabled     = 1
 let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
-
-
-let g:lightline = { 'colorscheme': 'afterglow'}
-"'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lrghter-community' | 'darker-community'
-"let g:material_theme_style = 'darker-community'
 
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
@@ -300,7 +280,7 @@ let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
 
-let g:clap_theme = 'material_design_dark'
+let g:clap_theme = 'afterglow'
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files<cr>
 noremap <F4> :Clap grep <cr>
