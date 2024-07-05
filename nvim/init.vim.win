@@ -17,6 +17,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} "多行选择插件
 Plug 'fholgado/minibufexpl.vim' " buffer管理器
 Plug 'BurntSushi/ripgrep' " rg
 Plug 'danilo-augusto/vim-afterglow' "主题
+Plug 'sainnhe/sonokai' "主题
 Plug 'rking/ag.vim' "搜索插件ag
 Plug 'dyng/ctrlsf.vim' "搜索插件
 Plug 'luochen1990/rainbow' "括号对颜色
@@ -53,7 +54,8 @@ map R :source $MYVIMRC<CR>
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 set t_Co=256
-colorscheme afterglow
+"colorscheme afterglow
+colorscheme sonokai
 
 execute pathogen#infect()
 syntax on
@@ -118,6 +120,7 @@ let g:XkbSwitchLib = 'C:\Program Files\Neovim\bin\libxkbswitch64.dll'
 let g:XkbSwitchEnabled     = 1
 let g:XkbSwitchIMappings   = ['cn']
 let g:XkbSwitchIMappingsTr = {'cn': {'<': '', '>': ''}}
+
 
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
@@ -241,7 +244,7 @@ map <F5> :UndotreeToggle<CR>
 "Vim内部的文件树：NERDTreeToggle
 map ff :NERDTreeToggle<CR>
 
-let g:airline_theme='afterglow'        "Airline主题
+let g:airline_theme='sonokai'        "Airline主题
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 " 开启tabline
@@ -280,7 +283,7 @@ let g:NERDCompactSexyComs = 1
 map <C-m> <leader>cc
 map <A-m> <leader>cu
 
-let g:clap_theme = 'afterglow'
+let g:clap_theme = 'sonokai'
 nnoremap <A-n> :tabn<cr>
 noremap <F2> :Clap files<cr>
 noremap <F4> :Clap grep <cr>
