@@ -24,3 +24,6 @@ o.signcolumn  = "yes"
 set.termguicolors = true
 set.mouse:append("a")
 set.clipboard:append("unnamedplus")
+
+g.mapleader = ","
+g.maplocalleader = ","
