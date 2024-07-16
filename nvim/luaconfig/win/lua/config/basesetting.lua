@@ -20,10 +20,12 @@ o.shiftwidth = 4
 o.cursorline = true
 o.cursorcolumn = true
 o.signcolumn  = "yes"
+o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 set.termguicolors = true
 set.mouse:append("a")
 set.clipboard:append("unnamedplus")
+set.guifont = "JetBrainsMono Nerd Font:h12"
 
 g.mapleader = ","
 g.maplocalleader = ","
