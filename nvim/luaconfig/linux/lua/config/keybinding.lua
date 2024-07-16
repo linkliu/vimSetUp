@@ -5,6 +5,11 @@ local g = vim.g
 local bo = vim.bo
 local map = vim.api.nvim_set_keymap
 local keymap = vim.keymap
+local nor_now = {noremap = true, nowait = true}
+local nor_now_slient = {noremap = true, nowait = true, silent = true}
+--system--------------------------------------------------------------------------------------------------------------
+keymap.set("n", "<leader>ch", ":noh<cr>", nor_now)
+
 
 --nvim-dap------------------------------------------------------------------------------------------------------------
 local dap = require("dap")
