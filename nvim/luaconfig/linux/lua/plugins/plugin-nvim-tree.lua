@@ -18,8 +18,8 @@ return {
             vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
             vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
             vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
-            --vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
-            --vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
+            vim.keymap.set('n', '<C-t>', api.node.open.tab,                     opts('Open: New Tab'))
+            vim.keymap.set('n', '<C-v>', api.node.open.vertical,                opts('Open: Vertical Split'))
             vim.keymap.set("n", "<C-x>", api.node.open.horizontal, opts("Open: Horizontal Split"))
             vim.keymap.set("n", "<BS>", api.node.navigate.parent_close, opts("Close Directory"))
             vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
@@ -56,9 +56,9 @@ return {
             vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
             vim.keymap.set("n", "P", api.node.navigate.parent, opts("Parent Directory"))
             vim.keymap.set("n", "q", api.tree.close, opts("Close"))
-            --vim.keymap.set('n', 'r',     api.fs.rename,                         opts('Rename'))
-            --vim.keymap.set('n', 'R',     api.tree.reload,                       opts('Refresh'))
-            --vim.keymap.set('n', 's',     api.node.run.system,                   opts('Run System'))
+            vim.keymap.set('n', 'r',     api.fs.rename,                         opts('Rename'))
+            vim.keymap.set('n', 'R',     api.tree.reload,                       opts('Refresh'))
+            vim.keymap.set('n', 's',     api.node.run.system,                   opts('Run System'))
             vim.keymap.set("n", "S", api.tree.search_node, opts("Search"))
             vim.keymap.set("n", "U", api.tree.toggle_custom_filter, opts("Toggle Hidden"))
             vim.keymap.set("n", "W", api.tree.collapse_all, opts("Collapse"))
@@ -69,17 +69,9 @@ return {
             vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
             -- END_DEFAULT_ON_ATTACH
             -- Customize keymap
-            --vim.keymap.set("n", "c", copy_file_to, opts("Copy File To"))
-            --vim.keymap.set("n", "t", api.node.open.tab, opts("Open: New Tab"))
 
             -- 以上是默认的 keymap，注释掉的是我需要修改的自己习惯的 keymap
-            -- 以下是我自己的 keymap
-
-            vim.keymap.set("n", "t", api.node.open.edit, opts("Open: New"))
-            vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical Split"))
-            vim.keymap.set("n", "m", api.fs.rename, opts("Rename"))
-            vim.keymap.set("n", "r", api.tree.reload, opts("Refresh"))
-            vim.keymap.set("n", "R", api.node.run.system, opts("Run System"))
+            vim.keymap.set("n", "<Leader>nf", ":NvimTreeFindFile<cr>")
         end
 
         require("nvim-tree").setup({
