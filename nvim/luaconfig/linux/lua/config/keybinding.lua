@@ -46,7 +46,13 @@ keymap.set("n", "<Leader>clb", function() dap.clear_breakpoints() end)
 local builtin = require('telescope.builtin')
 keymap.set('n', '<leader>ff', builtin.find_files, {})
 keymap.set('n', '<leader>fg', builtin.live_grep, {})
-keymap.set('n', '<leader>fb', builtin.buffers, {})
+keymap.set('n', '<leader>fb', function ()
+    local themes = require("telescope.themes")
+    builtin.buffers(themes.get_ivy({
+        only_cwd = true,
+        sort_mru = true,
+    }))
+end, {})
 keymap.set('n', '<leader>fh', builtin.help_tags, {})
 keymap.set("n", "<F2>", builtin.find_files, {})
 keymap.set("n", "<F3>", builtin.live_grep, {})
