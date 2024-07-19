@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         vim.api.nvim_set_keymap("n", ",nt", "::NvimTreeToggle<CR>", { noremap = true, silent = true })
-        vim.api.nvim_set_keymap("n", ",nf", ":::NvimTreeFocus<CR>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap("n", ",nf", "::NvimTreeFocus<CR>", { noremap = true, silent = true })
         local function on_attach(bufnr)
             local api = require("nvim-tree.api")
             local function opts(desc)
