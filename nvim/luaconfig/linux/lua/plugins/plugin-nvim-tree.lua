@@ -80,7 +80,7 @@ return {
                 dotfiles = false,
                 git_clean = false,
                 no_buffer = false,
-                custom = {"*.meta"},
+                custom = {"*.meta",".gitignore",".git",".vscode", ".vimspector.json"},
                 exclude = {},
             },
         })
