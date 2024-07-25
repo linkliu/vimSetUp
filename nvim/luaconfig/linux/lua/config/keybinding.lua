@@ -56,6 +56,7 @@ end, {})
 keymap.set('n', '<leader>fh', builtin.help_tags, {})
 keymap.set("n", "<F2>", builtin.find_files, {})
 keymap.set("n", "<F3>", builtin.live_grep, {})
+keymap.set("n", "<F4>", builtin.resume, {})
 
 --todo-comments------------------------------------------------------------------------------------------------------
 keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" })
