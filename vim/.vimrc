@@ -524,4 +524,4 @@ map <leader>rtc <Plug>VimspectorRunToCursor<cr>
 
 "字体JetBrains_Mono，需放在配置文件最后面
 "set guifont=JetBrains_Mono_NL:h11:b:cANSI:qDRAFT
-set guifont=JetBrainsMonoNL\ Nerd\ Font\ Mono\ Semi-Bold\ 12 "linux
+set guifont=JetBrainsMono\ Nerd\ Font\ Semi-Bold\ 12 "linux
