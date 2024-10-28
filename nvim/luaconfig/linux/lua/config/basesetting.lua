@@ -23,6 +23,7 @@ o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,termin
 o.ignorecase = true 
 o.fileformats ="unix"
 o.fileformat = "unix"
+o.wrap = false
 
 set.termguicolors = true
 set.mouse:append("a")
