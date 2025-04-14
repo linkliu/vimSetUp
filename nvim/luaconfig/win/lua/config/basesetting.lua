@@ -37,4 +37,13 @@ if g.neovide then
     g.neovide_no_idle         = true
     g.neovide_theme           = "dark"
     g.neovide_cursor_vfx_mode = "pixiedust"
+    g.neovide_opacity = 0.98
+    g.neovide_normal_opacity = 1
+    g.neovide_title_background_color = string.format("%x",vim.api.nvim_get_hl(0, {id=vim.api.nvim_get_hl_id_by_name("Normal")}).bg)
+    g.neovide_title_text_color = "white"
+    g.neovide_cursor_animation_length = 0.3
+    g.neovide_cursor_short_animation_length = 0.04
+    g.neovide_cursor_trail_size = 1.0
+
+
 end
