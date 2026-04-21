@@ -45,18 +45,36 @@ keymap.set("n", "<Leader>clb", function() dap.clear_breakpoints() end)
 --Telescope----------------------------------------------------------------------------------------------------------
 local builtin = require('telescope.builtin')
 local tele_actions = require("telescope.actions")
-keymap.set('n', '<leader>ff', builtin.find_files, {})
-keymap.set('n', '<leader>fg', builtin.live_grep, {})
+keymap.set('n', '<leader>ff', function()
+    builtin.find_files({
+        hidden = true,
+        no_ignore = true,
+        file_ignore_patterns = {
+            "node_modules",
+            "%.meta",
+        },
+    })
+end, { desc = 'Telescope find files' })
+keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep'})
 keymap.set('n', '<leader>fb', function ()
     local themes = require("telescope.themes")
     builtin.buffers(themes.get_ivy({
         only_cwd = true,
         sort_mru = true,
     }))
-end, {})
-keymap.set('n', '<leader>fh', builtin.help_tags, {})
+end, {desc = 'Telescope buffers' })
+keymap.set('n', '<leader>fh', builtin.help_tags, {desc = 'Telescope help tags'})
 keymap.set('n', '<leader>tb', builtin.buffers, {})
-keymap.set("n", "<F2>", builtin.find_files, {})
+keymap.set("n", "<F2>", function()
+    builtin.find_files({
+        hidden = true,
+        no_ignore = true,
+        file_ignore_patterns = {
+            "node_modules",
+            "%.meta",
+        },
+    })
+end, { desc = 'Telescope find files' })
 keymap.set("n", "<F3>", builtin.live_grep, {})
 keymap.set("n", "<F4>", builtin.resume, {})
 

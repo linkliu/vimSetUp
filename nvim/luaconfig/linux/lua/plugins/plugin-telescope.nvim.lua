@@ -17,7 +17,19 @@ return {
                     n = {
                         ["<M-d>"] = require('telescope.actions').delete_buffer
                     }
-                }
+                },
+                vimgrep_arguments = {
+                    "rg",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+
+                    "--hidden", -- 🔥 显示隐藏文件
+                    "--no-ignore-vcs", -- 🔥 忽略 gitignore
+                },
             },
             extensions = {
                 fzf = {
