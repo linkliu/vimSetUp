@@ -82,6 +82,7 @@ return {
                 no_buffer = false,
                 custom = {"*.meta",".gitignore",".git",".vscode", ".vimspector.json"},
                 exclude = {},
+                git_ignored = false,
             },
         })
     end

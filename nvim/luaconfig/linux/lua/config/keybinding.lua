@@ -84,4 +84,9 @@ keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, { des
 -- You can also specify a list of valid jump keywords
 keymap.set("n", "]t", function() require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } }) end, { desc = "Next error/warning todo comment" })
 
---align.vim-----------------------------------------------------------------------------------------------------------
+--format code-----------------------------------------------------------------------------------------------------------
+keymap.set({'n', 'v'}, "<leader>f", function()
+  vim.lsp.buf.format({ 
+    async = true,
+})
+end, { desc = "Format file" })
