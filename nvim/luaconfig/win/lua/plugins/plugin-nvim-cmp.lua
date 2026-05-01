@@ -1,6 +1,13 @@
 --自动补全插件，功能强大，支持多种语言服务器和补全源
 return {
     'hrsh7th/nvim-cmp',
+    dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lua',
+    },
     config = function()
         local luasnip = require("luasnip")
         local cmp = require("cmp")
@@ -40,6 +47,16 @@ return {
                     end
                 end, { "i", "s" }),
 
+                ["<C-n>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
@@ -50,6 +67,15 @@ return {
                     end
                 end, { "i", "s" }),
 
+                ["<C-p>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
                 -- ... Your other mappings ...
             },
 
@@ -58,6 +84,8 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
+                { name = "cmdline" },
+                { name = "nvim_lua" },
             },
         })
     end

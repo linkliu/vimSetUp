@@ -31,7 +31,7 @@
     "syntax": "md"
   },
   "documentColor": {
-    "enable": true
+    "enable": false
 },
 "format": {
     "externalTool": {

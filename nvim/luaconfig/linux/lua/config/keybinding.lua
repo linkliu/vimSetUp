@@ -85,8 +85,10 @@ keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, { des
 keymap.set("n", "]t", function() require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } }) end, { desc = "Next error/warning todo comment" })
 
 --format code-----------------------------------------------------------------------------------------------------------
-keymap.set({'n', 'v'}, "<leader>f", function()
-  vim.lsp.buf.format({ 
-    async = true,
-})
-end, { desc = "Format file" })
+keymap.set({'n', 'v'}, "<leader>f", function() vim.lsp.buf.format({ async = true,}) end, { desc = "Format file" })
+--rname
+keymap.set({'n', 'v'}, "<leader>rn", function() vim.lsp.buf.rename() end, { desc = "LSP Rename" })
+--reference
+keymap.set({'n', 'v'}, "<leader>rf", function() vim.lsp.buf.references() end, { desc = "LSP reference" })
+--type definition
+keymap.set({'n', 'v'}, "<leader>rt", function() vim.lsp.buf.type_definition() end, { desc = "LSP reference" })
