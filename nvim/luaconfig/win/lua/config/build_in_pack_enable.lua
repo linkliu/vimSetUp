@@ -1,4 +1,2 @@
---emmylua_ls https://github.com/EmmyLuaLs/emmylua-analyzer-rust
-vim.lsp.enable('emmylua_ls')
-vim.lsp.enable('csharp_ls')
-vim.lsp.enable('csharpier')
+--lua_ls https://github.com/LuaLS/lua-language-server
+vim.lsp.enable('lua_ls')

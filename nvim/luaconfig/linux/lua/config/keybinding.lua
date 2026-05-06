@@ -92,3 +92,5 @@ keymap.set({'n', 'v'}, "<leader>rn", function() vim.lsp.buf.rename() end, { desc
 keymap.set({'n', 'v'}, "<leader>rf", function() vim.lsp.buf.references() end, { desc = "LSP reference" })
 --type definition
 keymap.set({'n', 'v'}, "<leader>rt", function() vim.lsp.buf.type_definition() end, { desc = "LSP reference" })
+--goto definition
+keymap.set("n", "gd", function() vim.lsp.buf.definition({ loclist = true }) end, { desc = "LSP definition", silent=true })
