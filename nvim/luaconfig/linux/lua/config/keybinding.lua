@@ -59,7 +59,8 @@ keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep'}
 keymap.set('n', '<leader>fb', function ()
     local themes = require("telescope.themes")
     builtin.buffers(themes.get_ivy({
-        only_cwd = true,
+        only_cwd = false,
+        show_all_buffers = true,
         sort_mru = true,
     }))
 end, {desc = 'Telescope buffers' })
@@ -94,3 +95,6 @@ keymap.set({'n', 'v'}, "<leader>rf", function() vim.lsp.buf.references() end, { 
 keymap.set({'n', 'v'}, "<leader>rt", function() vim.lsp.buf.type_definition() end, { desc = "LSP reference" })
 --goto definition
 keymap.set("n", "gd", function() vim.lsp.buf.definition({ loclist = true }) end, { desc = "LSP definition", silent=true })
+--open diagnostics
+keymap.set("n", "<space>a", function() vim.diagnostic.open_float() end, { desc = "LSP open diagnostics", silent=true, nowait=true })
+
